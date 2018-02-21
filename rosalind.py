@@ -7,7 +7,7 @@ from abc import ABC, abstractproperty
 def rosalind_input():
     '''Open a scripts first input file as a string.'''
     with open(sys.argv[1]) as input_file:
-        return input_file.read()
+        return input_file.read().strip()
 
 
 def parse_fasta(input_string):

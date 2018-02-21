@@ -25,5 +25,5 @@ def dominant_allele_probability(k, m, n):
 
 
 if __name__ == '__main__':
-    k, m, n = map(int, rosalind_input().strip().split())
+    k, m, n = map(int, rosalind_input().split())
     print(dominant_allele_probability(k, m, n))
