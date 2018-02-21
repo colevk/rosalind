@@ -57,6 +57,11 @@ class BasePairString(str, ABC):
         '''The reverse complement of a base pair string.'''
         return self.complement()[::-1]
 
+    def hamming_distance(self, other):
+        '''The number of characters that are different between this string and
+        another string of equal length.'''
+        return sum(1 for a, b in zip(self, other) if a != b)
+
 
 class DNA(BasePairString):
     _rna_table = str.maketrans('T', 'U')
