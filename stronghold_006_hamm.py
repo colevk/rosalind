@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-'''
+"""
 Given: Two DNA strings s and t of equal length (not exceeding 1 kbp).
 
 Return: The Hamming distance d_H(s,t).
-'''
+"""
 
 from rosalind import *
 
