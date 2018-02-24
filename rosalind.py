@@ -74,6 +74,24 @@ class DNA(BasePairString):
 class RNA(BasePairString):
     _dna_table = str.maketrans('U', 'T')
     _complement_table = str.maketrans('ACGU', 'UGCA')
+    _codons = {
+        'UUU': 'F', 'UUC': 'F', 'UUA': 'L', 'UUG': 'L',
+        'UCU': 'S', 'UCC': 'S', 'UCA': 'S', 'UCG': 'S',
+        'UAU': 'Y', 'UAC': 'Y', 'UAA': None, 'UAG': None,
+        'UGU': 'C', 'UGC': 'C', 'UGA': None, 'UGG': 'W',
+        'CUU': 'L', 'CUC': 'L', 'CUA': 'L', 'CUG': 'L',
+        'CCU': 'P', 'CCC': 'P', 'CCA': 'P', 'CCG': 'P',
+        'CAU': 'H', 'CAC': 'H', 'CAA': 'Q', 'CAG': 'Q',
+        'CGU': 'R', 'CGC': 'R', 'CGA': 'R', 'CGG': 'R',
+        'AUU': 'I', 'AUC': 'I', 'AUA': 'I', 'AUG': 'M',
+        'ACU': 'T', 'ACC': 'T', 'ACA': 'T', 'ACG': 'T',
+        'AAU': 'N', 'AAC': 'N', 'AAA': 'K', 'AAG': 'K',
+        'AGU': 'S', 'AGC': 'S', 'AGA': 'R', 'AGG': 'R',
+        'GUU': 'V', 'GUC': 'V', 'GUA': 'V', 'GUG': 'V',
+        'GCU': 'A', 'GCC': 'A', 'GCA': 'A', 'GCG': 'A',
+        'GAU': 'D', 'GAC': 'D', 'GAA': 'E', 'GAG': 'E',
+        'GGU': 'G', 'GGC': 'G', 'GGA': 'G', 'GGG': 'G',
+    }
 
     @classmethod
     def complement_table(cls):
@@ -82,3 +100,17 @@ class RNA(BasePairString):
     def to_dna(self):
         """Convert RNA to DNA by replacing U with T."""
         return RNA(self.translate(RNA._dna_table))
+
+    def to_protein(self):
+        amino_acids = []
+        for index in range(0, len(self), 3):
+            amino = RNA._codons[self[index:index+3]]
+            if amino is not None:
+                amino_acids.append(amino)
+            else:
+                break
+        return Protein(''.join(amino_acids))
+
+
+class Protein(str):
+    pass
