@@ -9,7 +9,6 @@ common logarithm of the probability that a random string constructed with the
 GC-content found in A[k] will match s exactly.
 """
 
-
 from rosalind import *
 from math import log10
 

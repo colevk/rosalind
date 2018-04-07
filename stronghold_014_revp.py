@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-
 """
 Given: A DNA string of length at most 1 kbp in FASTA format.
 

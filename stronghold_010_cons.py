@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-
 """
 Given: A collection of at most 10 DNA strings of equal length (at most 1 kbp)
 in FASTA format.
