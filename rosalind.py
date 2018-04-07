@@ -2,6 +2,20 @@ import sys
 
 from collections import Counter
 from abc import ABC, abstractmethod
+from functools import wraps
+
+
+def memoize(func):
+    cache = {}
+
+    @wraps(func)
+    def wrapper(*args):
+        if args in cache:
+            return cache[args]
+        cache[args] = func(*args)
+        return cache[args]
+
+    return wrapper
 
 
 def rosalind_input():
