@@ -10,9 +10,8 @@ def memoize(func):
 
     @wraps(func)
     def wrapper(*args):
-        if args in cache:
-            return cache[args]
-        cache[args] = func(*args)
+        if args not in cache:
+            cache[args] = func(*args)
         return cache[args]
 
     return wrapper
