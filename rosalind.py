@@ -95,8 +95,8 @@ class RNA(BasePairString):
     _codons = {
         'UUU': 'F', 'UUC': 'F', 'UUA': 'L', 'UUG': 'L',
         'UCU': 'S', 'UCC': 'S', 'UCA': 'S', 'UCG': 'S',
-        'UAU': 'Y', 'UAC': 'Y', 'UAA': None, 'UAG': None,
-        'UGU': 'C', 'UGC': 'C', 'UGA': None, 'UGG': 'W',
+        'UAU': 'Y', 'UAC': 'Y', 'UAA': '*', 'UAG': '*',
+        'UGU': 'C', 'UGC': 'C', 'UGA': '*', 'UGG': 'W',
         'CUU': 'L', 'CUC': 'L', 'CUA': 'L', 'CUG': 'L',
         'CCU': 'P', 'CCC': 'P', 'CCA': 'P', 'CCG': 'P',
         'CAU': 'H', 'CAC': 'H', 'CAA': 'Q', 'CAG': 'Q',
@@ -121,13 +121,16 @@ class RNA(BasePairString):
 
     def to_protein(self):
         amino_acids = []
-        for index in range(0, len(self), 3):
-            amino = RNA._codons[self[index:index+3]]
-            if amino is not None:
-                amino_acids.append(amino)
+        for idx in range(0, len(self), 3):
+            aa = RNA._codons[self[idx:idx+3]]
+            if aa != '*':
+                amino_acids.append(aa)
             else:
                 break
         return Protein(''.join(amino_acids))
+
+    def to_amino_acids(self):
+        return ''.join(RNA._codons[self[idx:idx+3]] for idx in range(0, len(self) - len(self) % 3, 3))
 
 
 class Protein(str):

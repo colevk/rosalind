@@ -25,7 +25,7 @@ def main(input_string):
         reduce(
             lambda x, y: x * y,
             [number_of_encodings[aa] for aa in input_string],
-            number_of_encodings[None]
+            number_of_encodings['*']
         ) % 1000000)
 
 
