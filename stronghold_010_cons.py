@@ -6,6 +6,26 @@ in FASTA format.
 
 Return: A consensus string and profile matrix for the collection. (If several
 possible consensus strings exist, then you may return any one of them.)
+
+>>> main('''>Rosalind_1
+... ATCCAGCT
+... >Rosalind_2
+... GGGCAACT
+... >Rosalind_3
+... ATGGATCT
+... >Rosalind_4
+... AAGCAACC
+... >Rosalind_5
+... TTGGAACT
+... >Rosalind_6
+... ATGCCATT
+... >Rosalind_7
+... ATGGCACT''')
+ATGCAACT
+A: 5 1 0 0 5 5 0 0
+C: 0 0 1 4 2 0 6 1
+G: 1 1 6 3 0 1 0 0
+T: 1 5 0 0 0 1 1 6
 """
 
 from rosalind import *
@@ -39,9 +59,13 @@ class Consensus:
         self._update_consensus_string()
 
 
-if __name__ == '__main__':
-    dna_strings = parse_fasta(rosalind_input())
+def main(input_string):
+    dna_strings = parse_fasta(input_string)
     consensus = Consensus(list(dna_strings.values()))
     print(consensus.consensus_string)
     for bp in 'ACGT':
         print('{}: {}'.format(bp, ' '.join(map(str, consensus.profile[bp]))))
+
+
+if __name__ == '__main__':
+    main(rosalind_input())

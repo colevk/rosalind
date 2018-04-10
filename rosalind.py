@@ -19,11 +19,16 @@ def memoize(func):
 
 def rosalind_input():
     """Open a scripts first input file as a string."""
-    with open(sys.argv[1]) as input_file:
-        return input_file.read().strip()
+    try:
+        with open(sys.argv[1]) as input_file:
+            return input_file.read().strip()
+    except (IndexError, IOError) as e:
+        print('Error: {}.'.format(e))
+        print('You must specify an input file.', file=sys.stderr)
+        sys.exit(1)
 
 
-def parse_fasta(input_string):
+def parse_fasta(input_string, datatype=str):
     """Parse a string in the FASTA format.
 
     The string may contain multiple DNA strings, each with a name. Each
@@ -40,7 +45,7 @@ def parse_fasta(input_string):
         else:
             dataset[curr_name].append(line)
 
-    return {name: DNA(''.join(seq)) for name, seq in dataset.items()}
+    return {name: datatype(''.join(seq)) for name, seq in dataset.items()}
 
 
 class BasePairString(str, ABC):

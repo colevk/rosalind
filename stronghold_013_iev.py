@@ -16,13 +16,16 @@ aa-aa
 Return: The expected number of offspring displaying the dominant phenotype in
 the next generation, under the assumption that every couple has exactly two
 offspring.
+
+>>> main('1 0 0 1 0 1')
+3.5
 """
 
 from rosalind import *
 
 
-if __name__ == '__main__':
-    couples = [int(n) for n in rosalind_input().split()]
+def main(input_string):
+    couples = [int(n) for n in input_string.split()]
     print(
         couples[0] * 2 +
         couples[1] * 2 +
@@ -31,3 +34,6 @@ if __name__ == '__main__':
         couples[4] * 1 +
         couples[5] * 0
     )
+
+if __name__ == '__main__':
+    main(rosalind_input())

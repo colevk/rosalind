@@ -8,6 +8,9 @@ m are heterozygous, and n are homozygous recessive.
 Return: The probability that two randomly selected mating organisms will
 produce an individual possessing a dominant allele (and thus displaying the
 dominant phenotype). Assume that any two organisms can mate.
+
+>>> main('2 2 2')
+0.78333
 """
 
 from rosalind import *
@@ -25,6 +28,10 @@ def dominant_allele_probability(k, m, n):
     )
 
 
+def main(input_string):
+    alleles = map(int, input_string.split())
+    print('{:.5f}'.format(dominant_allele_probability(*alleles)))
+
+
 if __name__ == '__main__':
-    alleles = map(int, rosalind_input().split())
-    print(dominant_allele_probability(*alleles))
+    main(rosalind_input())

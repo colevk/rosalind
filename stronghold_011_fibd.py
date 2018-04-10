@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 
 """
-Given: Positive integers n≤100 and m≤20.
+Given: Positive integers n<=100 and m<=20.
 
 Return: The total number of pairs of rabbits that will remain after the n-th
 month if all rabbits live for m months.
+
+>>> main('6 3')
+4
 """
 
 from rosalind import *
@@ -31,6 +34,10 @@ def _fib_deaths(n, m):
     return _fib_births(n - m, m)
 
 
-if __name__ == '__main__':
-    n, m = map(int, rosalind_input().split())
+def main(input_string):
+    n, m = map(int, input_string.split())
     print(fib_with_mortality(n, m))
+
+
+if __name__ == '__main__':
+    main(rosalind_input())
