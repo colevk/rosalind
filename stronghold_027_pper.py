@@ -11,16 +11,12 @@ Return: The total number of partial permutations P(n,k), modulo 1,000,000.
 
 
 from rosalind import *
-from math import factorial
-
-
-def count_permutations(n, r):
-    return factorial(n) // factorial(n - r)
+from scipy.special import perm
 
 
 def main(input_string):
     n, r = map(int, input_string.split())
-    print(count_permutations(n, r) % 1000000)
+    print(perm(n, r, exact=True) % 1000000)
 
 
 if __name__ == '__main__':
