@@ -10,14 +10,14 @@ Return: All locations of t as a substring of s.
 2 4 10
 """
 
-import re
+import regex
 
 from rosalind import *
 
 
 def main(input_string):
     s, t = input_string.split()
-    print(' '.join(str(m.start() + 1) for m in re.finditer('(?={})'.format(t), s)))
+    print(' '.join(str(m.start() + 1) for m in regex.finditer(t, s, overlapped=True)))
 
 
 if __name__ == '__main__':
