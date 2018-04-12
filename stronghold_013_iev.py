@@ -35,5 +35,6 @@ def main(input_string):
         couples[5] * 0
     )
 
+
 if __name__ == '__main__':
     main(rosalind_input())

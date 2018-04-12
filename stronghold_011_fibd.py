@@ -21,6 +21,7 @@ def fib_with_mortality(n, m):
         return 1
     return fib_with_mortality(n - 1, m) + _fib_births(n, m) - _fib_deaths(n, m)
 
+
 @memoize
 def _fib_births(n, m):
     if n < 1:
@@ -28,6 +29,7 @@ def _fib_births(n, m):
     if n == 1:
         return 1
     return fib_with_mortality(n - 1, m) - _fib_births(n - 1, m)
+
 
 @memoize
 def _fib_deaths(n, m):
