@@ -34,7 +34,7 @@ def main(input_string):
     sequence = lines[0]
     gc_contents = [float(n) for n in lines[1].split()]
     probabilities = [log10_probability(sequence, gc) for gc in gc_contents]
-    print(' '.join('{:.3f}'.format(p) for p in probabilities))
+    print(' '.join(f'{p:.3f}' for p in probabilities))
 
 
 if __name__ == '__main__':

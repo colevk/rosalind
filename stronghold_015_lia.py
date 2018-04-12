@@ -26,7 +26,7 @@ def main(input_string):
         comb(total, m) * (0.25 ** m) * (0.75 ** (total - m))
         for m in range(n, total + 1)
     )
-    print('{:.3f}'.format(prob))
+    print(f'{prob:.3f}')
 
 
 if __name__ == '__main__':
