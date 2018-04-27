@@ -41,7 +41,7 @@ from itertools import product
 
 def main(input_string):
     letters, n = input_string.strip().split('\n')
-    letters = sorted(''.join(letters.split()))
+    letters = ''.join(letters.split())
     for seq in product(letters, repeat=int(n)):
         print(''.join(seq))
 
