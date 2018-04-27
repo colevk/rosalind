@@ -21,7 +21,7 @@ VALID_PROTEIN = 'M[^*]*\*'
 
 
 def main(input_string):
-    dna = next(iter(parse_fasta(input_string).values()))
+    dna = parse_fasta(input_string)[0][1]
     dna_revc = DNA(dna).reverse_complement()
     frames = [
         DNA(dna).to_rna().to_amino_acids(),

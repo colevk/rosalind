@@ -45,7 +45,7 @@ def parse_fasta(input_string, datatype=str):
         else:
             dataset[curr_name].append(line)
 
-    return {name: datatype(''.join(seq)) for name, seq in dataset.items()}
+    return tuple((name, datatype(''.join(seq))) for name, seq in dataset.items())
 
 
 class BasePairString(str, ABC):

@@ -33,14 +33,17 @@ from rosalind import *
 
 class Consensus:
     def __init__(self, sequences):
-        self._length = len(sequences[0])
+        it = iter(sequences)
+        first = next(it)
+        self._length = len(first)
         self.profile = {
             'A': [0] * self._length,
             'C': [0] * self._length,
             'G': [0] * self._length,
             'T': [0] * self._length,
         }
-        for sequence in sequences:
+        self._update_profile(first)
+        for sequence in it:
             self._update_profile(sequence)
         self._update_consensus_string()
 
@@ -61,7 +64,7 @@ class Consensus:
 
 def main(input_string):
     dna_strings = parse_fasta(input_string)
-    consensus = Consensus(list(dna_strings.values()))
+    consensus = Consensus(v for _, v in dna_strings)
     print(consensus.consensus_string)
     for bp in 'ACGT':
         print('{}: {}'.format(bp, ' '.join(map(str, consensus.profile[bp]))))

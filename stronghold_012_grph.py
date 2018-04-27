@@ -31,7 +31,7 @@ def main(input_string):
     sequences = parse_fasta(input_string)
     suffixes = defaultdict(list)
     prefixes = defaultdict(list)
-    for name, seq in sequences.items():
+    for name, seq in sequences:
         suffixes[seq[-3:]].append(name)
         prefixes[seq[:3]].append(name)
     for key in suffixes.keys():

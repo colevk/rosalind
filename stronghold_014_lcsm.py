@@ -21,7 +21,7 @@ from rosalind import *
 
 def main(input_string):
     strings = sorted(
-        list(parse_fasta(input_string).values()),
+        (v for _, v in parse_fasta(input_string)),
         key=len
     )
     longest_substring = ''

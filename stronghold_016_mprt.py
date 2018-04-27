@@ -30,7 +30,7 @@ N_GLYCOSYLATION_MOTIF = 'N[^P][ST][^P]'
 
 def get_protein(id):
     fasta_raw = requests.get(f'http://www.uniprot.org/uniprot/{id}.fasta').text
-    return next(iter(parse_fasta(fasta_raw).values()))
+    return parse_fasta(fasta_raw)[0][1]
 
 
 def find_motif(motif, protein):

@@ -25,7 +25,7 @@ from rosalind import *
 
 
 def main(input_string):
-    dataset = parse_fasta(input_string, datatype=DNA)
+    dataset = dict(parse_fasta(input_string, datatype=DNA))
     key = max(dataset, key=lambda x: dataset[x].gc_count())
     print(key)
     print('{:.6f}'.format(dataset[key].gc_count() * 100))

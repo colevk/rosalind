@@ -22,7 +22,7 @@ from rosalind import *
 
 
 def main(input_string):
-    sequence = list(parse_fasta(input_string).values())[0]
+    sequence = parse_fasta(input_string)[0][1]
     sequence_length = len(sequence)
     for offset in range(sequence_length):
         for length in range(4, 14, 2):
