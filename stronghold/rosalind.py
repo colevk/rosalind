@@ -18,7 +18,7 @@ def memoize(func):
 
 
 def rosalind_input():
-    """Open a scripts first input file as a string."""
+    """Open a script's first input file as a string."""
     try:
         with open(sys.argv[1]) as input_file:
             return input_file.read().strip()
