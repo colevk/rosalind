@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
 
 """
-After identifying the exons and introns of an RNA string, we only need to
-delete the introns and concatenate the exons to form a new string ready for
-translation.
-
 Given: A DNA string s (of length at most 1 kbp) and a collection of substrings
 of s acting as introns. All strings are given in FASTA format.
 
